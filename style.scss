@@ -1,0 +1,187 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primary-one: rgb(249, 155, 155);
+    --color-primary-two: #6c8cd6;
+
+    --color-theme-1: #111111;
+    --color-theme-2: #ffff;
+    --default-transition: all 1s ease-in-out;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(var(--color-primary-one) 50%, var(--color-primary-two));
+}
+
+.app {
+    font-family: "Poppins", sans-serif;
+    width: min(95vw, 31.25em);
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 1.88em;
+    
+    .container {
+        padding: 2em 2.5em;
+        background-color: #f1f8fb;
+        box-shadow: 0 1em 2em rgba(0, 0, 0, 0.3);
+        border-radius: 0.8em;
+    }
+
+    .input-wrapper {
+        position: relative;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 1em;
+
+        input {
+            width: 100%;
+            background-color: transparent;
+            color: var(--color-theme-1);
+            //font-size: 1em;
+            border: none;
+            border-bottom: 1px solid var(--color-theme-1);
+            border-radius: 0.1em;
+            padding: 0.5em 0.3em;
+            font-style: inherit;
+
+            &:focus {
+                outline: none;
+                border-color: var(--color-primary-one);
+                transition: var(--default-transition);
+            }
+        }
+
+        button {
+            position: relative;
+            border-radius: 0.5em;
+            // border: 1px solid var(--color-theme-1);
+            border: none;
+            font-weight: 500;
+            font-size: 0.9em;
+            background-color: var(--color-primary-two);
+            // background: linear-gradient(to right, var(--color-primary-one) 85%, var(--color-primary-two));
+            outline: none;
+            cursor: pointer;
+            color: var(--color-theme-2);
+
+            &:hover {
+                transform: translateY(-1px);
+                transition: var(--default-transition);
+            }
+        }
+    }
+
+    #tasks{
+        margin-top: 1em;
+        border-radius:0.5em ;
+        width: 100%;
+        position: relative;
+        padding: 1em 0.5em;
+        .task{
+            background-color: var(--color-theme-2);
+            padding: 0.8rem 1em;
+            display:grid;
+            grid-template-columns: 1fr 8fr 2fr 2fr ;
+            gap: 0.7em;
+            border-radius: 0.5em;
+            box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.05);
+            align-items: center;
+            cursor: pointer;
+
+            // :not(:first-child){
+            //     //margin-top: 1em;
+            // }
+
+            input[type="checkbox"]{
+                position: relative;
+                appearance: none;
+                height: 20px;
+                width: 20px;
+                border-radius: 50%;
+                border: 2px solid #e1e1e1;
+
+                &::before{
+                    content: "";
+                    position: absolute;
+                    transform: translate(-50%, -50%);
+                    top: 50%;
+                    left: 50%;
+                }
+
+                &:checked{
+                    background-color: var(--color-primary-two);
+                    border-color: var(--color-primary-two);
+
+                    ::before{
+                        display: block;
+                        position: absolute;
+                        content: "\f00c";
+                        color: var(--color-theme-2);
+                        font-size: 0.8em;
+                        font-family: "Font Awesome 5 Free";
+                        font-weight: 900;
+                    }
+                }
+
+                
+            }
+            span{
+                font: 0.9rem;
+                font-weight: 400;
+                word-break: break-all;
+            }
+
+            button{
+                color: var(--color-theme-2);
+                width: 100%;
+                padding: 0.7em 0;
+                border-radius: 0.5em;
+                border: none;
+                cursor: pointer;
+                outline: none;
+            }
+
+            .edit{
+                background-color: var(--color-primary-two);
+            }
+
+            .delete{
+                background-color: rgb(232, 58, 58);
+            }
+        }
+
+        #pending-tasks{
+            span{
+                color: var(--color-primary-one);
+            }
+        }
+
+        .completed{
+            text-decoration: line-through;
+            color: antiquewhite;
+        }
+    }
+
+ 
+    .empty-error{
+       
+        background-color: var(--color-theme-2);
+        width: 100%;
+        text-align: center;
+        color: red;
+        padding: 1em 0;
+        border-radius: 0.8em;
+        margin-top: 1.3em;
+        //opacity: 0;
+        transition: var(--default-transition);
+        
+        display: none;
+    }
+}
